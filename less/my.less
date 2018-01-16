@@ -1,0 +1,46 @@
+// 变量
+@size_width-main: 1280px;
+@size_height-main: 600px;
+
+// li基础宽、高
+@size-base-width: 100px;
+@size-base-height: 10px;
+
+
+@nice-blue: #5B83AD;
+@light-blue: @nice-blue + #111;
+
+// 修改边框颜色函数，默认边框颜色[绿色]
+.change_border_color(@border_size: 2px, @border_color: green){
+    border: @border_size solid @border_color;
+}
+div{
+    margin: 5px;
+    padding: 2px;
+}
+.div_main{
+    width: @size_width-main;
+    height: @size_height-main;
+    .change_border_color(); // 函数存在默认变量值时，调用函数时可以不传任何值()，没有默认值时，调用函数时必须传值(value)，否则编译报错。
+    background: #008000 + #6C94BE + #808080;
+    .div_list{
+        width: @size_width-main - 100;
+        height: @size_height-main - 430;
+        .change_border_color(2px, gray);
+        .ul_one{
+            width: @size-base-width + 520;
+            height: @size-base-height + 135;
+            .change_border_color(2px, red);
+            padding: 2px;
+            li{
+                width: @size-base-width + 50;
+                height: @size-base-height + 20;
+                .change_border_color(1px, green);
+                list-style: none;
+                float: left;
+                background: @light-blue;
+                color: @light-blue + #008000;
+            }
+        }
+    }
+}
